@@ -19,7 +19,7 @@ const { isFetching, data, error } = useFetch(url, {
 </script> -->
 
 <!-- formkit -->
-<template>
+<!-- <template>
   <div>
     <FormKit
       label="Username"
@@ -29,6 +29,7 @@ const { isFetching, data, error } = useFetch(url, {
       validation="required|matches:/^@[a-zA-Z]+$/|length:5"
       value="@useFormKit"
       prefix-icon="avatarMan"
+      inner-class="mycustom-inner"
     >
       <template #help="context">
         {{ context.label }}
@@ -36,5 +37,28 @@ const { isFetching, data, error } = useFetch(url, {
     </FormKit>
     <FormKit type="select" />
     <FormKit type="textarea" />
+  </div>
+</template> -->
+
+<!-- form population and submission -->
+
+<script setup>
+const formData = ref({
+  username: 'hamzahmd',
+  password: '',
+});
+
+const handleSubmit = async (data) => {
+  await wait(3000);
+  console.log(data);
+};
+</script>
+<template>
+  <div>
+    <FormKit type="form" :value="formData" @submit="handleSubmit">
+      <h1>Login</h1>
+      <FormKit type="text" label="Username" name="username" />
+      <FormKit type="password" label="Password" name="p assword" />
+    </FormKit>
   </div>
 </template>
