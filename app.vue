@@ -1,3 +1,4 @@
+<!-- example for useFetch in vue -->
 <!-- <template>
   <div v-if="error" style="color: red">Error :{{ error }}</div>
   <div v-else-if="isFetching" style="color: blue">loading...</div>
@@ -16,3 +17,24 @@ const { isFetching, data, error } = useFetch(url, {
   refetch: true,
 });
 </script> -->
+
+<!-- formkit -->
+<template>
+  <div>
+    <FormKit
+      label="Username"
+      name="username"
+      type="text"
+      help="Pick a new username"
+      validation="required|matches:/^@[a-zA-Z]+$/|length:5"
+      value="@useFormKit"
+      prefix-icon="avatarMan"
+    >
+      <template #help="context">
+        {{ context.label }}
+      </template>
+    </FormKit>
+    <FormKit type="select" />
+    <FormKit type="textarea" />
+  </div>
+</template>
